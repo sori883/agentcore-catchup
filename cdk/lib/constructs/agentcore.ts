@@ -1,13 +1,12 @@
 import * as path from 'path';
-import * as cdk from 'aws-cdk-lib';
 import { Asset } from 'aws-cdk-lib/aws-s3-assets';
 import { Construct } from 'constructs';
 import * as agentcore from '@aws-cdk/aws-bedrock-agentcore-alpha';
 import { BedrockFoundationModel } from '@aws-cdk/aws-bedrock-alpha';
 
-export class AgentCore extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
-    super(scope, id, props);
+export class AgentCore extends Construct {
+  constructor(scope: Construct, id: string) {
+    super(scope, id);
 
     // S3にアップロードするアセットを定義
     const asset = new Asset(this, 'CodeAsset', {
