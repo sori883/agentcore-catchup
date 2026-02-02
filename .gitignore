@@ -1,0 +1,22 @@
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+.env
+.env.dev
+.env.stg
+.env.prd
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+
+# OS
+.DS_Store
+
+# Publicリポジトリなら除外
+cdk.context.json
+__snapshots__
+
+.venv
+deployment_package
