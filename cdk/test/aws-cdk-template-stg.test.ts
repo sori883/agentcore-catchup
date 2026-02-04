@@ -3,7 +3,7 @@ import { Template } from 'aws-cdk-lib/assertions';
 
 import { AppStack } from '../lib/app-stack';
 import { DataStack } from '../lib/data-stack';
-import { InfraStack } from '../lib/infra-stack';
+import { InfraStack } from '../lib/main-stack';
 import { parameter as p } from '../parameter';
 import { validateEnvName } from '../parameter/envname-type';
 

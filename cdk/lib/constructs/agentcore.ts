@@ -5,26 +5,18 @@ import * as agentcore from '@aws-cdk/aws-bedrock-agentcore-alpha';
 import { BedrockFoundationModel } from '@aws-cdk/aws-bedrock-alpha';
 
 export class AgentCore extends Construct {
+  public readonly agentCoreRuntime: agentcore.IBedrockAgentRuntime;
+
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
-    // S3にアップロードするアセットを定義
-    const asset = new Asset(this, 'CodeAsset', {
-      path: path.join(__dirname, '../../../agentcore/deployment_package'),
-    });
-
     // AgentCore Runtime Artifact
-    const artifact = agentcore.AgentRuntimeArtifact.fromS3(
-      {
-        bucketName: asset.s3BucketName,
-        objectKey: asset.s3ObjectKey,
-      },
-      agentcore.AgentCoreRuntime.PYTHON_3_13,
-      ['main.py']
+    const artifact = agentcore.AgentRuntimeArtifact.fromAsset(
+      path.join(__dirname, '../../../agentcore')
     );
 
     // AgentCore Runtimeを定義
-    const agentRuntime = new agentcore.Runtime(this, 'agent', {
+    this.agentCoreRuntime = new agentcore.Runtime(this, 'agent', {
       runtimeName: 'sample_agent',
       agentRuntimeArtifact: artifact,
       description: 'Sample agent',
@@ -34,6 +26,6 @@ export class AgentCore extends Construct {
     const bedrockModel = BedrockFoundationModel.fromCdkFoundationModelId({
       modelId: 'openai.gpt-oss-120b-1:0',
     });
-    bedrockModel.grantInvoke(agentRuntime);
+    bedrockModel.grantInvoke(this.agentCoreRuntime);
   }
 }

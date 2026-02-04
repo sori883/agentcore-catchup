@@ -33,10 +33,61 @@ export const parameter = (envName: EnvNameType) => ({
 const envDiffParameter = (envName: EnvNameType) => {
   const params = {
     prd: {
+      vpc: {
+        cidr: '10.0.0.0/16',
+        maxAzs: 1,
+        publicNats: 0,
+        subnets: {
+          Private1: {
+            name: 'Private1',
+            subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
+            cidrMask: 24,
+          },
+          Private2: {
+            name: 'Private2',
+            subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
+            cidrMask: 24,
+          },
+        },
+      },
     },
     stg: {
+      vpc: {
+        cidr: '10.0.0.0/16',
+        maxAzs: 1,
+        publicNats: 0,
+        subnets: {
+          Private1: {
+            name: 'Private1',
+            subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
+            cidrMask: 24,
+          },
+          Private2: {
+            name: 'Private2',
+            subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
+            cidrMask: 24,
+          },
+        },
+      },
     },
     dev: {
+      vpc: {
+        cidr: '10.0.0.0/16',
+        maxAzs: 1,
+        publicNats: 0,
+        subnets: {
+          Private1: {
+            name: 'Private1',
+            subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
+            cidrMask: 24,
+          },
+          Private2: {
+            name: 'Private2',
+            subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
+            cidrMask: 24,
+          },
+        },
+      },
     },
   };
   return params[envName];

@@ -12,7 +12,7 @@ async def invoke(payload):
     agent = Agent(
         model="openai.gpt-oss-120b-1:0",
         system_prompt="""
-            You are a helpful assistant.
+            You are a helpful assistant.    
         """,
     )
 

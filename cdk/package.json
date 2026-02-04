@@ -9,9 +9,9 @@
   },
   "packageManager": "pnpm@10.28.2",
   "scripts": {
-    "cdk:prd": "pnpm agent:sync && pnpm with-env:prd cdk --context env=prd",
-    "cdk:stg": "pnpm agent:sync && pnpm with-env:stg cdk --context env=stg",
-    "cdk:dev": "pnpm agent:sync && pnpm with-env:dev cdk --context env=dev",
+    "cdk:prd": "pnpm with-env:prd cdk --context env=prd",
+    "cdk:stg": "pnpm with-env:stg cdk --context env=stg",
+    "cdk:dev": "pnpm with-env:dev cdk --context env=dev",
     "test:prd": "pnpm with-env:prd jest",
     "test:stg": "pnpm with-env:stg jest",
     "test:dev": "pnpm with-env:dev jest",
@@ -23,8 +23,7 @@
     "typecheck": "tsc --noEmit",
     "with-env:prd": "dotenv -e .env.prd --",
     "with-env:stg": "dotenv -e .env.stg --",
-    "with-env:dev": "dotenv -e .env.dev --",
-    "agent:sync": "cp ../agentcore/main.py ../agentcore/deployment_package/"
+    "with-env:dev": "dotenv -e .env.dev --"
   },
   "dependencies": {
     "@aws-cdk/aws-bedrock-agentcore-alpha": "2.236.0-alpha.0",
